@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Zenity Color Picker
-Comment=Selector de color para Wayland con zenity
-Exec=/datos/Proyectos/Z-Color-Picker/z-picker -w
-Icon=/datos/Proyectos/Z-Color-Picker/img/logo.svg
-Type=Application
-Terminal=false
