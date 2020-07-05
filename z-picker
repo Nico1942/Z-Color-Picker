@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+zenity_pick() {
+  color=$(zenity --color-selection)
+  colorHEX=$(echo $color | sed -e 's/rgb(//g' -e 's/)//g' -e 's/,/ /g')
+  echo "Hexadecimal:\n #$(printf '%02X' $colorHEX) \n\n RGB:\n $color"
+}
+
+window() {
+  zenity --info --title='Selector de color' --width=300 --text "Color seleccionado:\n\n $(zenity_pick)"
+}
+
+terminal() {
+  echo -e "\n Color seleccionado:\n\n "$(zenity_pick)"\n"
+}
+
+help() {
+  cat << EOF
+
+  AYUDA:
+  z-picker: Selector de color con zenity para Wayland
+  Uso:
+       -w Mostrar el resultado en una ventana.
+       -c Mostrar el resultado en la consola.
+       
+EOF
+}
+
+case $1 in
+  "-w") window;;
+  "-c") terminal;;
+  *) help;;
+esac
